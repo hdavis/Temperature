@@ -117,6 +117,11 @@
         }
         }).error(function() {});
  
+
+        // Add maximum temperature data
+        var max_temps = new L.geoJson();
+        max_temps.addTo(map);
+
         $.ajax({
         dataType: "json",
         url: "summary.geojson",
@@ -152,11 +157,12 @@
         };
         var overlays = {
             "Maximum Temperatures": max_temps,
+            "SF Schools": sf_schools,
             "Weather": nexrad,
         };
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        map.setView([38, -122], 4);
+        map.setView([38, -100], 4);
     </script>
 </body>
 </html>
