@@ -116,6 +116,17 @@
             });
         }
         }).error(function() {});
+ 
+        $.ajax({
+        dataType: "json",
+        url: "summary.geojson",
+        success: function(data) {
+            $(data.features).each(function(key, data) {
+            max_temps.addData(data);
+            });
+        }
+        }).error(function() {});
+
 
         // (2) Add a WMS for weather data
         var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
@@ -140,7 +151,7 @@
             "Water Color": Stamen_Watercolor
         };
         var overlays = {
-            "SF Public Schools": sf_schools,
+            "Maximum Temperatures": max_temps,
             "Weather": nexrad,
         };
         L.control.layers(baseLayers, overlays).addTo(map);

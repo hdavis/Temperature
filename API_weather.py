@@ -11,14 +11,14 @@ import json
 import sqlite3 as lite
 import pandas as pd
 
-# create cities dictionary to include cities of interest and their locations
-cities = {"Atlanta": '33.762909,-84.422675',
-          "Austin": '30.303936,-97.754355',
-          "Boston": '42.331960,-71.020173',
+# create cities dictionary to include cities of interest and their locations       
+cities = {"Atlanta": '33.755960,-84.390304',
+          "Austin": '30.265327,-97.743788',
+          "Boston": '42.358056,-71.063611',
           "Denver": '39.761850,-104.881105',
-          "Los Angeles": '34.019394,-118.410825',
-          "San Francisco": '37.727239,-123.032229',
-          "Seattle": '47.620499,-122.350876'
+          "Los Angeles": '34.050000,-118.250000',
+          "San Francisco": '37.783333,-122.416667',
+          "Seattle": '47.609722,-122.333056'
           }
 
 APIKEY = "2afe41b558da0181d1a9483c41f42df8"
@@ -72,13 +72,13 @@ for city_var, latLong in cities.iteritems():
             df = pd.DataFrame(rows, columns=cols)
 
         date = date + datetime.timedelta(days=1)
-        # print('Just finished collecting and storing data for ' + city_var)  # print statement for debugging
-        # end of date loop - one city done, move on to the next city
+        # end of date loop - one city done, move on to the next city       
+    #print('Just finished collecting and storing data for ' + city_var)  # print statement for debugging
 
-# end of city loop - all cities should have been processed
+    # end of city loop - all cities should have been processed
 
 # calculate summary stistics over the 30-day period and store in a new dataframe, df_summary, then write to .csv file
-df_summary = pd.DataFrame(columns=('city', 'max_tmax', 'min_tmax', 'range_tmax', 'mean_tmax', 'sd_tmax'))
+df_summary = pd.DataFrame(columns=('city', 'long', 'lat', 'max_tmax', 'min_tmax', 'range_tmax', 'mean_tmax', 'sd_tmax'))
 
 df_summary['max_tmax'] = df.groupby('city')['tmax'].max()
 df_summary['min_tmax'] = df.groupby('city')['tmax'].min()
@@ -87,4 +87,9 @@ df_summary['sd_tmax'] = df.groupby('city')['tmax'].std()
 df_summary['range_tmax'] = df_summary['max_tmax'] - df_summary['min_tmax']
 df_summary['city'] = df_summary.index
 
+for k, v in cities.iteritems():
+    location = tuple(float(x) for x in v.split(','))
+    df_summary.set_value(k,'lat',location[0])
+    df_summary.set_value(k,'long',location[1])
+    
 df_summary.to_csv('summary.csv', index=False)
