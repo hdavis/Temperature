@@ -10,8 +10,7 @@ import requests
 import json
 import sqlite3 as lite
 import pandas as pd
-import plotly
-import plotly.graph_objs as go
+import seaborn as sns
 
 # Create cities dictionary to include cities of interest and their locations
 cities = {"Atlanta": '33.755960,-84.390304',
@@ -135,79 +134,7 @@ for k, v in cities.iteritems():
 
 df_summary.to_csv('summary.csv', index=False)
 
-# To plot the data via box plots, each city's 30-days of data needs to be
-# separated out into its own DataFrame.
-df_Atlanta = df[df.city == 'Atlanta']
-df_Austin = df[df.city == 'Austin']
-df_Boston = df[df.city == 'Boston']
-df_Denver = df[df.city == 'Denver']
-df_LosAngeles = df[df.city == 'Los Angeles']
-df_Seattle = df[df.city == 'Seattle']
-
-# Create a box plot for each city using the plotly library.
-# plotly.offline.init_notebook_mode()
-
-x_data = ['Atlanta',
-          'Austin',
-          'Boston',
-          'Denver',
-          'Los Angeles',
-          'Seattle'
-          ]
-
-y_data = [df_Atlanta['tmax'],
-          df_Austin['tmax'],
-          df_Boston['tmax'],
-          df_Denver['tmax'],
-          df_LosAngeles['tmax'],
-          df_Seattle['tmax']
-          ]
-
-colors = ['rgba(93, 164, 214, 0.5)',
-          'rgba(255, 144, 14, 0.5)',
-          'rgba(44, 160, 101, 0.5)',
-          'rgba(255, 65, 54, 0.5)',
-          'rgba(207, 114, 255, 0.5)',
-          'rgba(127, 96, 0, 0.5)']
-
-traces = []
-
-for xd, yd, cls in zip(x_data, y_data, colors):
-        traces.append(go.Box(
-            y=yd,
-            name=xd,
-            boxpoints='all',
-            jitter=0.5,
-            whiskerwidth=0.2,
-            fillcolor=cls,
-            marker=dict(
-                size=2,
-            ),
-            line=dict(width=1),
-        ))
-
-layout = go.Layout(
-    title='Maximum Daily Temperature (deg F) for the Last 30 Days',
-    yaxis=dict(
-        autorange=True,
-        showgrid=True,
-        zeroline=True,
-        dtick=5,
-        gridcolor='rgb(255, 255, 255)',
-        gridwidth=1,
-        zerolinecolor='rgb(255, 255, 255)',
-        zerolinewidth=2,
-    ),
-    margin=dict(
-        l=40,
-        r=30,
-        b=80,
-        t=100,
-    ),
-    paper_bgcolor='rgb(243, 243, 243)',
-    plot_bgcolor='rgb(243, 243, 243)',
-    showlegend=False
-)
-
-fig = go.Figure(data=traces, layout=layout)
-plotly.plotly.iplot(fig)
+sns.set_style("whitegrid")
+ax = sns.boxplot(x="city", y="tmax", data=df.sort_values(by='city'))
+ax = sns.swarmplot(x="city", y="tmax", data=df.sort_values(by='city'),
+                   color=".25")
