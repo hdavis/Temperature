@@ -6,7 +6,8 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />-->
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="../dist/leaflet.ie.css" /><![endif]-->
     <style type="text/css">
     html, body, #map{
@@ -18,7 +19,8 @@
     </style>
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>-->
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
     <div id="map"></div>
@@ -69,11 +71,18 @@
         success: function(data) {
             $(data.features).each(function(key, data) {
             max_temps.addData(data);
-            });
+            var dkblueIcon = L.icon({
+                iconUrl: 'pin-1_dk_blue.png',
+                iconSize:     [40, 60], 
+                }); 
+            pointToLayer: function(feature,latlng){
+	           return L.marker(latlng,{icon: dkblueIcon});
+                });
         }
         }).error(function() {});
-
-
+        
+  
+        
         // (2) Add a WMS for weather data
         var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
         layers: 'nexrad-n0r-900913',
