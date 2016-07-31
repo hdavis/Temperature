@@ -28,9 +28,6 @@
     <script>
         var map = L.map('map');
         var zoommax = 18;
-        var initLat = 38;
-        var initLong = -100;
-        var initZoomLevel = 4;
 
         // BASEMAPS
         // Additional basemaps @ https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -65,7 +62,6 @@
         // OVERLAYS
  
         // Add maximum temperature data
-       
         var max_temps = new L.geoJson();
         max_temps.addTo(map);
 
@@ -75,39 +71,11 @@
         success: function(data) {
             $(data.features).each(function(key, data) {
             max_temps.addData(data);
-            });
+        });
         }
         }).error(function() {});
-       
         
- /*        $.ajax({
-            type: "POST",
-            url: 'summary.geojson',
-            dataType: 'json',
-            success: function (response) {
-                geojsonLayer = L.geoJson(response).addTo(map);
-                //map.fitBounds(geojsonLayer.getBounds());
-               // $("#info").fadeOut(500);
-            }
-        });
-        
-*/         
-         // Add maximum temperature data       
-
- /* 
-        $.getJSON("summary.geojson",function(data){
-            var dkblueIcon = L.icon({
-                iconUrl: 'pin-1_dk_blue.png',
-                iconSize:     [40, 60], 
-                });
-            L.geoJson(data,{
-                pointToLayer: function(feature,latlng){
-	               return L.marker(latlng,{icon: dkblueIcon});
-                }
-            }).addTo(map);
-        });
-*/        
-        
+  
         
         // (2) Add a WMS for weather data
         var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
@@ -131,7 +99,7 @@
         };
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        map.setView([initLat, initLong], initZoomLevel);
+        map.setView([38, -100], 4);
     </script>
 </body>
 </html>
