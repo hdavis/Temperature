@@ -86,8 +86,8 @@
             dataType: 'json',
             success: function (response) {
                 geojsonLayer = L.geoJson(response).addTo(map);
-                map.fitBounds(geojsonLayer.getBounds());
-                $("#info").fadeOut(500);
+                //map.fitBounds(geojsonLayer.getBounds());
+               // $("#info").fadeOut(500);
             }
         });
         
