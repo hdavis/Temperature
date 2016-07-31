@@ -79,17 +79,18 @@
         }
         }).error(function() {});
     
-        
-/*
-            var dkblueIcon = L.icon({
-                iconUrl: 'pin-1_dk_blue.png',
-                iconSize:     [40, 60], 
-                });
-            L.geoJson(data,{
-                pointToLayer: function(feature,latlng){
-	               return L.marker(latlng,{icon: dkblueIcon});
-                }
-            }).addTo(map);
+    
+        var dkblueIcon = L.icon({
+            iconUrl: 'pin-1_dk_blue.png',
+            iconSize:     [40, 60], 
+            iconAnchor: [13, 27],
+            popupAnchor:  [1, -24],
+            });
+        L.geoJson(data,{
+            pointToLayer: function(feature,latlng){
+	           return L.marker(latlng,{icon: dkblueIcon});
+            }
+        }).addTo(map);
 
         
  /*        $.ajax({
