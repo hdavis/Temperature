@@ -21,8 +21,8 @@
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
 <!--    <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>-->
-<!--   <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script> -->
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>-->
 
     <div id="map"></div>
 
@@ -84,6 +84,17 @@
         
         max_temps.addTo(map);
 
+        $.ajax({
+        dataType: "json",
+        url: "summary.geojson",
+        success: function(data) {
+            $(data.features).each(function(key, data) {
+            max_temps.addData(data);
+        });
+        }
+        }).error(function() {});
+        
+/* not working with old jquery - might not work with new one either
         $.ajax({
         dataType: "json",
         url: "summary.geojson",
