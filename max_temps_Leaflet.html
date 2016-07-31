@@ -65,7 +65,7 @@
         // OVERLAYS
  
         // Add maximum temperature data
-/*        
+       
         var max_temps = new L.geoJson();
         max_temps.addTo(map);
 
@@ -75,12 +75,12 @@
         success: function(data) {
             $(data.features).each(function(key, data) {
             max_temps.addData(data);
-        });
+            });
         }
         }).error(function() {});
-*/        
+       
         
-        $.ajax({
+ /*        $.ajax({
             type: "POST",
             url: 'summary.geojson',
             dataType: 'json',
@@ -91,7 +91,7 @@
             }
         });
         
-        
+*/         
          // Add maximum temperature data       
 
  /* 
@@ -126,7 +126,7 @@
             "Open Street Map - B&W": OpenStreetMap_BlackAndWhite
         };
         var overlays = {
-            "Maximum Temperatures": geojsonLayer,
+            "Maximum Temperatures": max_temps,
             "Weather": nexrad,
         };
         L.control.layers(baseLayers, overlays).addTo(map);
