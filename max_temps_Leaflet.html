@@ -65,7 +65,7 @@
         // OVERLAYS
  
         // Add maximum temperature data
-       
+        
         var max_temps = new L.geoJson();
         max_temps.addTo(map);
 
@@ -75,10 +75,22 @@
         success: function(data) {
             $(data.features).each(function(key, data) {
             max_temps.addData(data);
-            });
+        });
         }
         }).error(function() {});
-       
+    
+        
+/*
+            var dkblueIcon = L.icon({
+                iconUrl: 'pin-1_dk_blue.png',
+                iconSize:     [40, 60], 
+                });
+            L.geoJson(data,{
+                pointToLayer: function(feature,latlng){
+	               return L.marker(latlng,{icon: dkblueIcon});
+                }
+            }).addTo(map);
+
         
  /*        $.ajax({
             type: "POST",
