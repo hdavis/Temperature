@@ -72,13 +72,6 @@
             $(data.features).each(function(key, data) {
             max_temps.addData(data);
         });
-            var dkblueIcon = L.icon({
-                iconUrl: 'pin-1_dk_blue.png',
-                iconSize:     [40, 60], 
-                }); 
-            pointToLayer: function(feature,latlng){
-	           return L.marker(latlng,{icon: dkblueIcon});
-                };
         }
         }).error(function() {});
         
