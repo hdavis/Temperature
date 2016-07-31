@@ -21,8 +21,10 @@
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
 <!--    <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>-->
-    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <!--<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>-->
+      <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <!--<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>-->
+    
 
     <div id="map"></div>
 
@@ -72,9 +74,8 @@
             // add GeoJSON layer to the map once the file is loaded
             L.geoJson(data).addTo(map);
         });
- */     
-        var max_temps = new L.geoJson();
-
+ */ 
+        
         var dkblueIcon = L.icon({
             iconUrl: 'pin-1_dk_blue.png',
             iconSize:     [40, 60], 
@@ -82,8 +83,22 @@
             popupAnchor:  [1, -24],
         });
         
-        max_temps.addTo(map);
-       
+        $.getJSON("summary.geojson", function(data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.city);
+                }
+            });
+            geojson.addTo(map);
+        }); 
+        //geojson.addTo(map);
+        
+       // var max_temps = new L.geoJson();
+
+
+        
+        //max_temps.addTo(map);
+/*       
     // format for  jquery-3.1.0
     //.ajax({url:a,type:"GET",dataType:"script",cache:!0,async:!1,global:!1,"throws":!0})}
         
@@ -97,7 +112,8 @@
         });
         }
         }).error(function() {});
-        
+*/        
+
 /* not working with old jquery - might not work with new one either
         $.ajax({
         dataType: "json",
@@ -174,7 +190,7 @@
             "Open Street Map - B&W": OpenStreetMap_BlackAndWhite
         };
         var overlays = {
-            "Maximum Temperatures": max_temps,
+            "Maximum Temperatures": geojson,
             "Weather": nexrad,
         };
         L.control.layers(baseLayers, overlays).addTo(map);
