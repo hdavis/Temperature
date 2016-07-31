@@ -21,8 +21,8 @@
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
 <!--    <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>-->
-<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-    <!--<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>-->
+        <!--<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
     <div id="map"></div>
 
@@ -74,7 +74,7 @@
         });
  */     
         var max_temps = new L.geoJson();
-        
+
         var dkblueIcon = L.icon({
             iconUrl: 'pin-1_dk_blue.png',
             iconSize:     [40, 60], 
@@ -83,7 +83,8 @@
         });
         
         max_temps.addTo(map);
-
+        //.ajax({url:a,type:"GET",dataType:"script",cache:!0,async:!1,global:!1,"throws":!0})}
+        
         $.ajax({
         dataType: "json",
         url: "summary.geojson",
