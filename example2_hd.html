@@ -41,7 +41,7 @@ function popUp(feature, layer) {
         layer.bindPopup(feature.properties.city);
     }
 
-    var geojsonLayer = new L.GeoJSON.AJAX("./summary.geojson", {onEachFeature:popUp});
+    var geojsonLayer = new L.GeoJSON.AJAX("summary.geojson", {onEachFeature:popUp});
 
     geojsonLayer.addTo(map);
         
