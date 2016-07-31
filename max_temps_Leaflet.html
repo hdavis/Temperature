@@ -74,6 +74,14 @@
         });
  */     
         var max_temps = new L.geoJson();
+        
+        var dkblueIcon = L.icon({
+            iconUrl: 'pin-1_dk_blue.png',
+            iconSize:     [40, 60], 
+            iconAnchor: [13, 27],
+            popupAnchor:  [1, -24],
+        });
+        
         max_temps.addTo(map);
 
         $.ajax({
@@ -81,18 +89,23 @@
         url: "summary.geojson",
         success: function(data) {
             $(data.features).each(function(key, data) {
-            max_temps.addData(data);
+            max_temps.addData(data, pointToLayer: function(feature,latlng){
+	           return L.marker(latlng,{icon: dkblueIcon});
         });
         }
         }).error(function() {});
     
-        
+  /*      
         var dkblueIcon = L.icon({
             iconUrl: 'pin-1_dk_blue.png',
             iconSize:     [40, 60], 
             iconAnchor: [13, 27],
             popupAnchor:  [1, -24],
             });
+        pointToLayer: function(feature,latlng){
+	           return L.marker(latlng,{icon: dkblueIcon});
+            
+            
         L.geoJson(data,{
             pointToLayer: function(feature,latlng){
 	           return L.marker(latlng,{icon: dkblueIcon});
