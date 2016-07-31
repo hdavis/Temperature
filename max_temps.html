@@ -65,6 +65,11 @@
         var max_temps = new L.geoJson();
         max_temps.addTo(map);
 
+        var dkblueIcon = L.icon({
+                iconUrl: 'pin-1_dk_blue.png',
+                iconSize:     [40, 60], 
+                });
+        
         $.ajax({
         dataType: "json",
         url: "summary.geojson",
@@ -72,17 +77,28 @@
             $(data.features).each(function(key, data) {
             max_temps.addData(data);
         });
-            var dkblueIcon = L.icon({
-                iconUrl: 'pin-1_dk_blue.png',
-                iconSize:     [40, 60], 
-                }); 
             pointToLayer: function(feature,latlng){
 	           return L.marker(latlng,{icon: dkblueIcon});
                 };
         }
         }).error(function() {});
         
-  
+         // Add maximum temperature data       
+
+ /* 
+        $.getJSON("summary.geojson",function(data){
+            var dkblueIcon = L.icon({
+                iconUrl: 'pin-1_dk_blue.png',
+                iconSize:     [40, 60], 
+                });
+            L.geoJson(data,{
+                pointToLayer: function(feature,latlng){
+	               return L.marker(latlng,{icon: dkblueIcon});
+                }
+            }).addTo(map);
+        });
+*/        
+        
         
         // (2) Add a WMS for weather data
         var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
