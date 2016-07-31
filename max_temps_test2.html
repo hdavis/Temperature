@@ -62,9 +62,11 @@
         // OVERLAYS
  
         // Add maximum temperature data
-        var max_temps = new L.geoJson();
+  /*      var max_temps = new L.geoJson();
         max_temps.addTo(map);
 
+
+        
         $.ajax({
         dataType: "json",
         url: "summary.geojson",
@@ -72,10 +74,50 @@
             $(data.features).each(function(key, data) {
             max_temps.addData(data);
         });
+
+            pointToLayer: function(feature,latlng){
+	           return L.marker(latlng,{icon: dkblueIcon});
+                };
         }
         }).error(function() {});
+  */
         
-  
+         // Add maximum temperature data       
+        
+        var dkblueIcon = L.icon({
+            iconUrl: 'pin-1_dk_blue.png',
+            iconSize:     [40, 60], 
+            iconAnchor: [13, 27],
+            popupAnchor:  [1, -24],
+            });
+        
+        var geojsonLayer = new L.GeoJSON.AJAX("summary.geojson",{
+                                middleware:function(data){
+                                   return L.geoJson(data, {
+                                      onEachFeature: function (feature, layer) {
+                                        layer.setIcon(dkblueIcon);
+                                      }
+                                    }).addTo(map);
+                                }
+                            });        
+   
+        
+ /* 
+             var dkblueIcon = new L.Icon({
+ 
+        $.getJSON("summary.geojson",function(data){
+            var dkblueIcon = L.icon({
+                iconUrl: 'pin-1_dk_blue.png',
+                iconSize:     [40, 60], 
+                });
+            L.geoJson(data,{
+                pointToLayer: function(feature,latlng){
+	               return L.marker(latlng,{icon: dkblueIcon});
+                }
+            }).addTo(map);
+        });
+*/        
+        
         
         // (2) Add a WMS for weather data
         var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
@@ -94,7 +136,8 @@
             "Open Street Map - B&W": OpenStreetMap_BlackAndWhite
         };
         var overlays = {
-            "Maximum Temperatures": max_temps,
+ //           "Maximum Temperatures": max_temps,
+            "Maximum Temperatures": geojsonLayer,
             "Weather": nexrad,
         };
         L.control.layers(baseLayers, overlays).addTo(map);
