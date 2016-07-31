@@ -71,6 +71,7 @@
         success: function(data) {
             $(data.features).each(function(key, data) {
             max_temps.addData(data);
+        });
         }
         }).error(function() {});
         
