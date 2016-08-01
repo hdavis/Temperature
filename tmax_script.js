@@ -38,6 +38,7 @@ map.addLayer(OSM_BW_tiles);
 
 // OVERLAYS
 // Add maximum temperature data from geoJSON file
+var geojson = {};
 $.getJSON('summary.geojson', function (geojson) {
   L.geoJson(geojson, {
     onEachFeature: function (feature, layer) {
