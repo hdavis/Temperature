@@ -12,7 +12,7 @@ var map = L.map('map', {
 $.getJSON('summary.json', function (geojson) {
   L.geoJson(geojson, {
     onEachFeature: function (feature, layer) {
-      layer.bindPopup(feature.properties.name);
+      layer.bindPopup(feature.properties.city);
     }
   }).addTo(map);
 });
