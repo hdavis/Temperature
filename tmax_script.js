@@ -1,8 +1,3 @@
-var initLat = 38;
-var initLong = -100;
-var initZoomLevel = 4;
-var zoommax = 18;
-
 var map = L.map('map', {
   'center': [initLat, initLong],
   'zoom': initZoomLevel,
@@ -12,6 +7,11 @@ var map = L.map('map', {
     })
   ]
 });
+
+var initLat = 38;
+var initLong = -100;
+var initZoomLevel = 4;
+var zoommax = 18;
 
 $.getJSON('summary.geojson', function (geojson) {
   L.geoJson(geojson, {
@@ -194,3 +194,4 @@ $.getJSON('summary.geojson', function (geojson) {
 
         map.setView([initLat, initLong], initZoomLevel);
     </script>
+*/
