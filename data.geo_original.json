@@ -2,35 +2,35 @@
     "type": "FeatureCollection",
     "features": [{
         "type": "Feature",
-        "properties": {name:"point 1"},
+        "properties": {},
         "geometry": {
             "type": "Point",
             "coordinates": [-45, -45]
         }
     },{
         "type": "Feature",
-        "properties": {name:"point 2"},
+        "properties": {},
         "geometry": {
             "type": "Point",
             "coordinates": [45, 45]
         }
     },{
         "type": "Feature",
-        "properties": {name:"point 3"},
+        "properties": {},
         "geometry": {
             "type": "Point",
             "coordinates": [-45, 45]
         }
     },{
         "type": "Feature",
-        "properties": {name:"point 4"},
+        "properties": {},
         "geometry": {
             "type": "Point",
             "coordinates": [45, -45]
         }
     },{
         "type": "Feature",
-        "properties": {name:"point 5"},
+        "properties": {},
         "geometry": {
             "type": "Point",
             "coordinates": [0, 0]
