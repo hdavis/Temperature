@@ -55,7 +55,6 @@ var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexra
     });
 map.addLayer(nexrad);
 
-/*
 // Define and display the control for Basemaps and Overlays
 var baseLayers = {
     "Water Color": Stamen_WC_tiles,
@@ -67,6 +66,5 @@ var overlays = {
     "Weather": nexrad
 };
 L.control.layers(baseLayers, overlays).addTo(map);
-*/
 
 map.setView([initLat, initLong], initZoomLevel);
