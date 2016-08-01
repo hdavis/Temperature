@@ -36,6 +36,8 @@ var OSM_BW_tiles = L.tileLayer(OSM_BW_url, {
     });
 map.addLayer(OSM_BW_tiles);
 
+// OVERLAYS
+// Add maximum temperature data from geoJSON file
 $.getJSON('summary.geojson', function (geojson) {
   L.geoJson(geojson, {
     onEachFeature: function (feature, layer) {
@@ -43,5 +45,14 @@ $.getJSON('summary.geojson', function (geojson) {
     }
   }).addTo(map);
 });
+
+// Add a WMS for weather data
+var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+    layers: 'nexrad-n0r-900913',
+    format: 'image/png',
+    transparent: true,
+    attribution: "Weather data © 2012 IEM Nexrad"
+    });
+map.addLayer(nexrad);
 
 map.setView([initLat, initLong], initZoomLevel);
