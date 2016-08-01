@@ -60,11 +60,11 @@ var baseLayers = {
     "Water Color": Stamen_WC_tiles,
     "Open Map Surfer Roads": Surfer_tiles,
     "Open Street Map - B&W": OSM_BW_tiles
-    };
+};
 var overlays = {
-    "Maximum Temperatures": geojson,
+//    "Maximum Temperatures": geojson,
     "Weather": nexrad
-    };
+};
 L.control.layers(baseLayers, overlays).addTo(map);
 
 map.setView([initLat, initLong], initZoomLevel);
