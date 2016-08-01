@@ -1,8 +1,9 @@
 var initLat = 38;
-var initLong = -100;
+var initLong = -102;
 var initZoomLevel = 4;
-//var zoommax = 18;
+var zoommax = 18;
 
+/*
 var map = L.map('map', {
   'center': [initLat, initLong],
   'zoom': initZoomLevel,
@@ -12,8 +13,16 @@ var map = L.map('map', {
     })
   ]
 });
+*/
 
+var map = L.map('map');
 
+// OpenStreetMap Black and White basemap
+var OpenStreetMap_BlackAndWhite = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+maxZoom: zoommax,
+attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
+map.addLayer(OpenStreetMap_BlackAndWhite);
 
 $.getJSON('summary.geojson', function (geojson) {
   L.geoJson(geojson, {
@@ -22,3 +31,5 @@ $.getJSON('summary.geojson', function (geojson) {
     }
   }).addTo(map);
 });
+
+map.setView([initLat, initLong], initZoomLevel);

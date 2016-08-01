@@ -1,7 +1,3 @@
-// -----------------------------------------------------------
-
-/*
-    <script>
         var map = L.map('map');
         var zoommax = 18;
         var initLat = 38;
@@ -37,7 +33,7 @@
         });
         map.addLayer(OpenStreetMap_BlackAndWhite);
 
-*/
+
         // OVERLAYS
  
         // Add maximum temperature data
@@ -49,7 +45,7 @@
         });
  */ 
  
-/*
+
         var dkblueIcon = L.icon({
             iconUrl: 'pin-1_dk_blue.png',
             iconSize:     [40, 60], 
@@ -146,7 +142,7 @@
         });
 */        
         
-/*        
+      
         // (2) Add a WMS for weather data
         var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
         layers: 'nexrad-n0r-900913',
@@ -171,4 +167,3 @@
 
         map.setView([initLat, initLong], initZoomLevel);
     </script>
-*/
