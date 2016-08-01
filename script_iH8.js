@@ -9,7 +9,7 @@ var map = L.map('map', {
 });
 
 //$.getJSON('data.geo.json', function (geojson) {
-$.getJSON('summary.json', function (geojson) {
+$.getJSON('summary.geojson', function (geojson) {
   L.geoJson(geojson, {
     onEachFeature: function (feature, layer) {
       layer.bindPopup(feature.properties.city);
