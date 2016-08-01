@@ -4,8 +4,8 @@ var initZoomLevel = 4;
 //var zoommax = 18;
 
 var map = L.map('map', {
-  'center': [38, -100],
-  'zoom': 4,
+  'center': [initLat, initLong],
+  'zoom': initZoomLevel,
   'layers': [
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       'attribution': 'Map data &copy; OpenStreetMap contributors'
