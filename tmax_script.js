@@ -39,30 +39,43 @@ map.addLayer(OSM_BW_tiles);
 
 // OVERLAYS
 // Add maximum temperature data from geoJSON file
-/*
+
 var max_temps = new L.geoJson();
 max_temps.addTo(map);
+
+//$.ajax({
+//    dataType: "json",
+//    url: "summary.geojson",
+//    success: function (data) {
+//        $(data.features).each(function (key, value) {
+//            max_temps.addData(value);
+//            
+//        });
+//        
+//    }
+//}).error(function () {});
 
 $.ajax({
     dataType: "json",
     url: "summary.geojson",
     success: function (data) {
-        $(data.features).each(function (key, data) {
-            max_temps.addData(data);
-        });
+        onEachFeature: function (feature, layer) {
+        layer.bindPopup(feature.properties.city);
+    }
+        
     }
 }).error(function () {});
-*/
 
-var max_temp = {};
 
-$.getJSON('summary.geojson', function (v_geojson) {
-    max_temp = L.geoJson(v_geojson, {
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup(feature.properties.city);
-        }
-    }).addTo(map);
-});
+//var max_temp = {};
+
+//$.getJSON('summary.geojson', function (v_geojson) {
+//    L.geoJson(v_geojson, {
+//        onEachFeature: function (feature, layer) {
+//            layer.bindPopup(feature.properties.city);
+//        }
+//    }).addTo(map);
+//});
 
 console.log(max_temp);
 
@@ -82,7 +95,7 @@ var baseLayers = {
     "Open Street Map - B&W": OSM_BW_tiles
 };
 var overlays = {
-    "Maximum Temperatures": max_temp,
+    "Maximum Temperatures": max_temps,
   //  "Maximum Temperatures": max_temps,
     "Weather": nexrad
 };
