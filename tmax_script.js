@@ -38,6 +38,7 @@ map.addLayer(OSM_BW_tiles);
 
 // OVERLAYS
 // Add maximum temperature data from geoJSON file
+/*
 var max_temps = new L.geoJson();
 max_temps.addTo(map);
 
@@ -50,8 +51,8 @@ $.ajax({
         });
     }
 }).error(function () {});
+*/
 
-/*
 var geojson = {};
 $.getJSON('summary.geojson', function (geojson) {
   L.geoJson(geojson, {
@@ -61,7 +62,7 @@ $.getJSON('summary.geojson', function (geojson) {
   }).addTo(map);
 });
 
-*/
+
 
 // Add a WMS for weather data
 var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
@@ -79,8 +80,8 @@ var baseLayers = {
     "Open Street Map - B&W": OSM_BW_tiles
 };
 var overlays = {
- //   "Maximum Temperatures": geojson,
-    "Maximum Temperatures": max_temps,
+    "Maximum Temperatures": geojson,
+  //  "Maximum Temperatures": max_temps,
     "Weather": nexrad
 };
 L.control.layers(baseLayers, overlays).addTo(map);
