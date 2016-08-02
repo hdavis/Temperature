@@ -49,7 +49,7 @@ $.ajax({
     success: function (data) {
         $(data.features).each(function (key, value) {
             max_temps.addData(value);
-        console.log(value);    
+        console.log('value: ' + value);    
         });
         
     }
