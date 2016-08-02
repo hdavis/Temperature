@@ -17,7 +17,7 @@ var Stamen_WC_tiles = L.tileLayer(Stamen_WC_url, {
     minZoom: 1,
     maxZoom: zoommax,
     ext: 'png'
-    });
+});
 
 // Open Map Surfer Roads Basemap
 var Surfer_url = 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}';
@@ -25,7 +25,7 @@ var Surfer_attr = 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience 
 var Surfer_tiles = L.tileLayer(Surfer_url, {
     maxZoom: zoommax,
     attribution: Surfer_attr
-    });
+});
 
 // OpenStreetMap Black and White basemap
 var OSM_BW_url = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
@@ -33,11 +33,25 @@ var OSM_BW_attr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenS
 var OSM_BW_tiles = L.tileLayer(OSM_BW_url, {
     maxZoom: zoommax,
     attribution: OSM_BW_attr
-    });
+});
 map.addLayer(OSM_BW_tiles);
 
 // OVERLAYS
 // Add maximum temperature data from geoJSON file
+var max_temps = new L.geoJson();
+max_temps.addTo(map);
+
+$.ajax({
+    dataType: "json",
+    url: "summary.geojson",
+    success: function (data) {
+        $(data.features).each(function (key, data) {
+            max_temps.addData(data);
+        });
+    }
+}).error(function () {});
+
+/*
 var geojson = {};
 $.getJSON('summary.geojson', function (geojson) {
   L.geoJson(geojson, {
@@ -47,13 +61,15 @@ $.getJSON('summary.geojson', function (geojson) {
   }).addTo(map);
 });
 
+*/
+
 // Add a WMS for weather data
 var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
     layers: 'nexrad-n0r-900913',
     format: 'image/png',
     transparent: true,
     attribution: "Weather data © 2012 IEM Nexrad"
-    });
+});
 map.addLayer(nexrad);
 
 // Define and display the control for Basemaps and Overlays
@@ -63,7 +79,8 @@ var baseLayers = {
     "Open Street Map - B&W": OSM_BW_tiles
 };
 var overlays = {
-    "Maximum Temperatures": geojson,
+ //   "Maximum Temperatures": geojson,
+    "Maximum Temperatures": max_temps,
     "Weather": nexrad
 };
 L.control.layers(baseLayers, overlays).addTo(map);
