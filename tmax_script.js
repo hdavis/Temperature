@@ -64,6 +64,7 @@ $.ajax({
             layer.bindPopup(feature.properties.city);
         }
     }).addTo(map);
+}
 }).error(function () {});
 
 
