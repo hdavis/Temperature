@@ -59,11 +59,11 @@ $.ajax({
     dataType: "json",
     url: "summary.geojson",
     success: function (data) {
+        L.geoJson(data, {
         onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.city);
-    }
-        
-    }
+            layer.bindPopup(feature.properties.city);
+        }
+    }).addTo(map);
 }).error(function () {});
 
 
