@@ -1,3 +1,4 @@
+"use scrict";
 var map = L.map('map');
 
 var initLat = 38;
@@ -53,13 +54,14 @@ $.ajax({
 }).error(function () {});
 */
 
-var geojson = {};
-$.getJSON('summary.geojson', function (geojson) {
-  L.geoJson(geojson, {
-    onEachFeature: function (feature, layer) {
-      layer.bindPopup(feature.properties.city);
-    }
-  }).addTo(map);
+var max_temp = {};
+
+$.getJSON('summary.geojson', function (v_geojson) {
+    max_temp = L.geoJson(v_geojson, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.city);
+        }
+    }).addTo(map);
 });
 
 
@@ -80,7 +82,7 @@ var baseLayers = {
     "Open Street Map - B&W": OSM_BW_tiles
 };
 var overlays = {
-    "Maximum Temperatures": geojson,
+    "Maximum Temperatures": max_temp,
   //  "Maximum Temperatures": max_temps,
     "Weather": nexrad
 };
