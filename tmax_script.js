@@ -64,7 +64,7 @@ $.getJSON('summary.geojson', function (v_geojson) {
     }).addTo(map);
 });
 
-
+console.log(max_temp);
 
 // Add a WMS for weather data
 var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
