@@ -43,29 +43,29 @@ map.addLayer(OSM_BW_tiles);
 var max_temps = new L.geoJson();
 max_temps.addTo(map);
 
-//$.ajax({
-//    dataType: "json",
-//    url: "summary.geojson",
-//    success: function (data) {
-//        $(data.features).each(function (key, value) {
-//            max_temps.addData(value);
-//            
-//        });
-//        
-//    }
-//}).error(function () {});
-
 $.ajax({
     dataType: "json",
     url: "summary.geojson",
     success: function (data) {
-        L.geoJson(data, {
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup(feature.properties.city);
-        }
-    }).addTo(map);
-}
+        $(data.features).each(function (key, value) {
+            max_temps.addData(value);
+        console.log(value);    
+        });
+        
+    }
 }).error(function () {});
+
+//$.ajax({
+//    dataType: "json",
+//    url: "summary.geojson",
+//    success: function (data) {
+//        L.geoJson(data, {
+//        onEachFeature: function (feature, layer) {
+//            layer.bindPopup(feature.properties.city);
+//        }
+//    }).addTo(map);
+//}
+//}).error(function () {});
 
 
 //var max_temp = {};
@@ -78,7 +78,7 @@ $.ajax({
 //    }).addTo(map);
 //});
 
-console.log(max_temps);
+//console.log(value);
 
 // Add a WMS for weather data
 var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
