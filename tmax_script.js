@@ -47,9 +47,6 @@ $.ajax({
     success: function (data) {
         $(data.features).each(function (key, data) {
             max_temps.addData(data);
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.city);
-            }
         });
     }
 }).error(function () {});
