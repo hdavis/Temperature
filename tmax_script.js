@@ -165,4 +165,4 @@ var overlays = {
 };
 L.control.layers(baseLayers, overlays).addTo(map);
 
-map.setView([initLat, initLong], initZoomLevel);
+//map.setView([initLat, initLong], initZoomLevel);
