@@ -1,12 +1,12 @@
 'use strict';
 var my_json;
+
+var map = L.map('map');
+
 var initLat = 38;
 var initLong = -102;
 var initZoomLevel = 4;
 var zoommax = 18;
-
-//var map = L.map('map').setView([initLat, initLong], initZoomLevel);
-var map = L.map('map').setView([51.505, -0.09], 14);
 
 // BASEMAPS
 // Additional basemaps @ https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -61,7 +61,6 @@ map.addLayer(OSM_BW_tiles);
 //        
 //    }
 //}).error(function () {});
-
 var smallIcon = new L.Icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon.png',
     iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon-2x.png',
@@ -93,29 +92,30 @@ var smallIcon = new L.Icon({
 
 
 
-//
-//var my_json;
-// //$.getJSON('../Dati/my-geojson.geojson', function(data) {
-//$.getJSON('summary.geojson', function(data) {
-//           my_json = L.geoJson(data, {
-//            pointToLayer: function(feature, latlng) {
-//                 var smallIcon = new L.Icon({
-//                     iconSize: [27, 27],
-//                     iconAnchor: [13, 27],
-//                     popupAnchor:  [1, -24],
-//                     iconUrl: 'pin-1_dk_blue.png'
-//                 });
-//                return L.marker(latlng, {icon: smallIcon});
-//            },
-//           onEachFeature: function (feature, layer) {
-//                   layer.bindPopup(feature.properties.city + '<br />'
-//                                                 + feature.properties.range_tmax);
-//           }
-//         });
-// my_json.addTo(markers.addTo(map));
-// //TOC.addOverlay(my_json, "My layer name in TOC");
-// //map.removeLayer(my_json); 
-// });
+
+
+
+ //$.getJSON('../Dati/my-geojson.geojson', function(data) {
+$.getJSON('summary.geojson', function(data) {
+           my_json = L.geoJson(data, {
+            pointToLayer: function(feature, latlng) {
+                 var smallIcon = new L.Icon({
+                     iconSize: [27, 27],
+                     iconAnchor: [13, 27],
+                     popupAnchor:  [1, -24],
+                     iconUrl: 'pin-1_dk_blue.png'
+                 });
+                return L.marker(latlng, {icon: smallIcon});
+            },
+           onEachFeature: function (feature, layer) {
+                   layer.bindPopup(feature.properties.city + '<br />'
+                                                 + feature.properties.range_tmax);
+           }
+         });
+ my_json.addTo(markers.addTo(map));
+ //TOC.addOverlay(my_json, "My layer name in TOC");
+ //map.removeLayer(my_json); 
+ });
 
 
 //$.ajax({
@@ -164,4 +164,4 @@ var overlays = {
 };
 L.control.layers(baseLayers, overlays).addTo(map);
 
-//map.setView([initLat, initLong], initZoomLevel);
+map.setView([initLat, initLong], initZoomLevel);
