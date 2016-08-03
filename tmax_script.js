@@ -5,8 +5,8 @@ var initLong = -102;
 var initZoomLevel = 4;
 var zoommax = 18;
 
-//var map = L.map('map').setView([initLat, initLong], initZoomLevel);
-var map = L.map('map').setView([51.505, -0.09], 14);
+var map = L.map('map').setView([initLat, initLong], initZoomLevel);
+//var map = L.map('map').setView([51.505, -0.09], 14);
 
 // BASEMAPS
 // Additional basemaps @ https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -74,10 +74,10 @@ var smallIcon = new L.Icon({
 
   function onEachFeature(feature, layer) {
     console.log(feature);
-    layer.bindPopup(feature.properties.ATT1);
+    layer.bindPopup(feature.properties.city);
   }
 
-  $.getJSON('sample.json', function(data) {
+  $.getJSON('summary.geojson', function(data) {
     console.log(data);
 
     L.geoJson(data, {
