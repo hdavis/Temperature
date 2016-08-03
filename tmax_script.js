@@ -5,9 +5,7 @@ var initLong = -102;
 var initZoomLevel = 4;
 var zoommax = 18;
 
-//var map = L.map('map');
-var map = L.map('map').setView([initLat, initLong], initZoomLevel);
-//var map = L.map('map').setView([51.505, -0.09], 14);
+var map = L.map('map');
 
 // BASEMAPS
 // Additional basemaps @ https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -43,8 +41,18 @@ map.addLayer(OSM_BW_tiles);
 // OVERLAYS
 // Add maximum temperature data from geoJSON file
 
-//var max_temps = new L.geoJson();
-//max_temps.addTo(map);
+var max_temps = new L.geoJson();
+max_temps.addTo(map);
+
+$.ajax({
+dataType: "json",
+url: "summary.geojson",
+success: function(data) {
+    $(data.features).each(function(key, data) {
+    max_temps.addData(data);
+});
+}
+}).error(function() {});
 
 //$.ajax({
 //    dataType: "json",
@@ -63,60 +71,39 @@ map.addLayer(OSM_BW_tiles);
 //    }
 //}).error(function () {});
 
-var smallIcon = new L.Icon({
-    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon.png',
-    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon-2x.png',
-    iconSize:    [25, 41],
-    iconAnchor:  [12, 41],
-    popupAnchor: [1, -34],
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    shadowSize:  [41, 41]
-  });
-
-  function onEachFeature(feature, layer) {
-    console.log(feature);
-    layer.bindPopup(feature.properties.city);
-  }
-
-  $.getJSON('summary.geojson', function(data) {
-    console.log(data);
-
-    L.geoJson(data, {
-      pointToLayer: function(feature, latlng) {
-        console.log(latlng, feature);
-        return L.marker(latlng, {
-          icon: smallIcon
-        });
-      },
-      onEachFeature: onEachFeature
-    }).addTo(map);
-  });
-
-
-
+//============================
+//var smallIcon = new L.Icon({
+//    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon.png',
+//    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon-2x.png',
+//    iconSize:    [25, 41],
+//    iconAnchor:  [12, 41],
+//    popupAnchor: [1, -34],
+//    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+//    shadowSize:  [41, 41]
+//  });
 //
-//var my_json;
-// //$.getJSON('../Dati/my-geojson.geojson', function(data) {
-//$.getJSON('summary.geojson', function(data) {
-//           my_json = L.geoJson(data, {
-//            pointToLayer: function(feature, latlng) {
-//                 var smallIcon = new L.Icon({
-//                     iconSize: [27, 27],
-//                     iconAnchor: [13, 27],
-//                     popupAnchor:  [1, -24],
-//                     iconUrl: 'pin-1_dk_blue.png'
-//                 });
-//                return L.marker(latlng, {icon: smallIcon});
-//            },
-//           onEachFeature: function (feature, layer) {
-//                   layer.bindPopup(feature.properties.city + '<br />'
-//                                                 + feature.properties.range_tmax);
-//           }
-//         });
-// my_json.addTo(markers.addTo(map));
-// //TOC.addOverlay(my_json, "My layer name in TOC");
-// //map.removeLayer(my_json); 
-// });
+//  function onEachFeature(feature, layer) {
+//    console.log(feature);
+//    layer.bindPopup(feature.properties.city);
+//  }
+//
+//  $.getJSON('summary.geojson', function(data) {
+//    console.log(data);
+//
+//    L.geoJson(data, {
+//      pointToLayer: function(feature, latlng) {
+//        console.log(latlng, feature);
+//        return L.marker(latlng, {
+//          icon: smallIcon
+//        });
+//      },
+//      onEachFeature: onEachFeature
+//    }).addTo(map);
+//  });
+//===========================
+
+
+
 
 
 //$.ajax({
@@ -160,9 +147,9 @@ var baseLayers = {
     "Open Street Map - B&W": OSM_BW_tiles
 };
 var overlays = {
-    "Maximum Temperatures": my_json,
+    "Maximum Temperatures": max_temps,
     "Weather": nexrad
 };
 L.control.layers(baseLayers, overlays).addTo(map);
 
-//map.setView([initLat, initLong], initZoomLevel);
+map.setView([initLat, initLong], initZoomLevel);
