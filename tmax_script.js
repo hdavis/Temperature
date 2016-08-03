@@ -1,4 +1,4 @@
-"use scrict";
+"use strict";
 var map = L.map('map');
 
 var initLat = 38;
@@ -49,7 +49,12 @@ $.ajax({
     success: function (data) {
         $(data.features).each(function (key, value) {
             max_temps.addData(value);
-        console.log('value: ' + value);    
+        console.log('value: ' + value);
+        max_temps (data, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.city);
+        }
+    }).addTo(map);
         });
         
     }
