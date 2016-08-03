@@ -5,7 +5,8 @@ var initLong = -102;
 var initZoomLevel = 4;
 var zoommax = 18;
 
-var map = L.map('map').setView([initLat, initLong], initZoomLevel);
+var map = L.map('map');
+//var map = L.map('map').setView([initLat, initLong], initZoomLevel);
 //var map = L.map('map').setView([51.505, -0.09], 14);
 
 // BASEMAPS
@@ -164,4 +165,4 @@ var overlays = {
 };
 L.control.layers(baseLayers, overlays).addTo(map);
 
-//map.setView([initLat, initLong], initZoomLevel);
+map.setView([initLat, initLong], initZoomLevel);
