@@ -41,18 +41,37 @@ map.addLayer(OSM_BW_tiles);
 // OVERLAYS
 // Add maximum temperature data from geoJSON file
 
+var smallIcon = new L.Icon({
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon.png',
+    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon-2x.png',
+    iconSize:    [25, 41],
+    iconAnchor:  [12, 41],
+    popupAnchor: [1, -34],
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    shadowSize:  [41, 41]
+});
+
+function onEachFeature(feature, layer) {
+    console.log(feature);
+    layer.bindPopup(feature.properties.city);
+}
+
+
 var max_temps = new L.geoJson();
 max_temps.addTo(map);
 
 $.ajax({
-dataType: "json",
-url: "summary.geojson",
-success: function(data) {
-    $(data.features).each(function(key, data) {
-    max_temps.addData(data);
-});
-}
+    dataType: "json",
+    url: "summary.geojson",
+    success: function(data) {
+        $(data.features).each(function(key, data) {
+        max_temps.addData(data);
+        max_temps.onEachFeature(onEachFeature);
+    });
+    }
 }).error(function() {});
+
+
 
 //$.ajax({
 //    dataType: "json",
