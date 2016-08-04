@@ -65,6 +65,9 @@ $.ajax({
     url: "summary.geojson",
     success: function(data) {
         $(data.features).each(function(key, data) { 
+            max_temps.onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.city);
+            }
             max_temps.addData(data);
         });
         
@@ -102,6 +105,34 @@ $.ajax({
 //  });
 //===========================
 
+
+
+
+
+//$.ajax({
+//    dataType: "json",
+//    url: "summary.geojson",
+//    success: function (data) {
+//        L.geoJson(data, {
+//        onEachFeature: function (feature, layer) {
+//            layer.bindPopup(feature.properties.city);
+//        }
+//    }).addTo(map);
+//}
+//}).error(function () {});
+
+
+//var max_temp = {};
+
+//$.getJSON('summary.geojson', function (v_geojson) {
+//    L.geoJson(v_geojson, {
+//        onEachFeature: function (feature, layer) {
+//            layer.bindPopup(feature.properties.city);
+//        }
+//    }).addTo(map);
+//});
+
+//console.log(value);
 
 // Add a WMS for weather data
 var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
