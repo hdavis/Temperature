@@ -67,7 +67,9 @@ $.ajax({
         $(data.features).each(function(key, data) { 
         max_temps.addData(data);
         });
-        max_temps.onEachFeature(onEachFeature);
+        max_temps.onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.city);
+        }
     }
 }).error(function() {});
 
