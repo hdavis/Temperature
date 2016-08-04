@@ -51,11 +51,18 @@ var smallIcon = new L.Icon({
     shadowSize:  [41, 41]
 });
 
+var popupText = "Summary stats for the Daily High <br>Temperatures over the 30 days between <br>6/7/16 and 7/6/16 inclusive" + 
+    "<br>City: " + feature.properties.city + 
+    "<br>Range of the Daily Highs over 30 days: " + feature.properties.range_tmax
+    + "<br>Highest Daily High over 30 days: " + feature.properties.max_tmax"
+    + "<br>Lowest Daily High over 30 days: " + feature.properties.min_tmax"
+    + "<br>Average Daily High over 30 days: " + feature.properties.mean_tmax"
+    + "<br>Standard Deviation of the Daily Highs over the 30 days: " + feature.properties.sd_tmax"
+            
 function onEachFeature(feature, layer) {
     console.log(feature);
-    layer.bindPopup(feature.properties.city);
+    layer.bindPopup(popupText);
 }
-
 
 var max_temps = new L.geoJson(null, {
     pointToLayer: function(feature, latlng) {
