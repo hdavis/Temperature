@@ -66,31 +66,13 @@ $.ajax({
     success: function(data) {
         $(data.features).each(function(key, data) { 
         max_temps.addData(data);
-        });
         max_temps.onEachFeature: function (feature, layer) {
             layer.bindPopup(feature.properties.city);
         }
+        });
+        
     }
 }).error(function() {});
-
-
-
-//$.ajax({
-//    dataType: "json",
-//    url: "summary.geojson",
-//    success: function (data) {
-//        $(data.features).each(function (key, value) {
-//            max_temps.addData(value);
-//        console.log('value: ' + value);
-//        max_temps (data, {
-//        onEachFeature: function (feature, layer) {
-//            layer.bindPopup(feature.properties.city);
-//        }
-//    }).addTo(map);
-//        });
-//        
-//    }
-//}).error(function () {});
 
 //============================
 //var smallIcon = new L.Icon({
