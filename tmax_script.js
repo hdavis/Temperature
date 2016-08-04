@@ -64,10 +64,10 @@ $.ajax({
     dataType: "json",
     url: "summary.geojson",
     success: function(data) {
-        $(data.features).each(function(key, data) {
-      //  max_temps.onEachFeature(onEachFeature);
+        $(data.features).each(function(key, data) { 
         max_temps.addData(data);
-    });
+        });
+        max_temps.onEachFeature(onEachFeature);
     }
 }).error(function() {});
 
