@@ -65,7 +65,7 @@ $.ajax({
     url: "summary.geojson",
     success: function(data) {
         $(data.features).each(function(key, data) {
-        max_temps.onEachFeature(onEachFeature);
+      //  max_temps.onEachFeature(onEachFeature);
         max_temps.addData(data);
     });
     }
