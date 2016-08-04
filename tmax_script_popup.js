@@ -1,5 +1,5 @@
 'use strict';
-var my_json;
+//var my_json;
 var initLat = 38;
 var initLong = -102;
 var initZoomLevel = 4;
@@ -51,12 +51,45 @@ var smallIcon = new L.Icon({
     shadowSize:  [41, 41]
 });
 
+//var popupText = "Summary stats for the Daily High"
+//                + "<br>Temperatures over the 30 days between"
+//                + "<br>6/7/16 and 7/6/16 inclusive"
+//                + "<br>City: " + feature.properties.city
+//                + "<br>Range of Daily Highs: " + feature.properties.range_tmax
+//                + "<br>Highest Daily High: " + feature.properties.max_tmax
+//                + "<br>Lowest Daily High: " + feature.properties.min_tmax
+//                + "<br>Average Daily High: " + feature.properties.mean_tmax
+//                + "<br>Standard Deviation of Daily Highs: "
+//                + feature.properties.sd_tmax;
+
+
+
+//var popupText = "Magnitude: " + feature.properties.mag
+//                + "<br>Location: " + feature.properties.place
+//                + "<br><a href='" + feature.properties.url + "'>More info</a>";
+            
+function onEachFeature(feature, layer) {
+    console.log(feature);
+    var popupText = "City: " + feature.properties.city
+        + "<br>Range of Daily Highs: " + feature.properties.range_tmax
+        + "<br>Highest Daily High: " + feature.properties.max_tmax;
+    layer.bindPopup(popupText);
+}
+
 function onEachFeature(feature, layer) {
     console.log(feature);
     layer.bindPopup(feature.properties.city);
 }
 
-var max_temps = new L.geoJson();
+var max_temps = new L.geoJson(null, {
+    pointToLayer: function(feature, latlng) {
+        console.log(latlng, feature);
+        return L.marker(latlng, {
+          icon: smallIcon
+        });
+      },
+      onEachFeature: onEachFeature
+});
 max_temps.addTo(map);
 
 $.ajax({
@@ -72,9 +105,9 @@ $.ajax({
 
 //============================
 //var smallIcon = new L.Icon({
-//    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon.png',
-//    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon-2x.png',
-//    iconSize:    [25, 41],
+//    iconUrl: 'pin-1_dk_blue.png',
+//    iconRetinaUrl: 'pin-1_dk_blue.png',
+//    iconSize:    [25, 25],
 //    iconAnchor:  [12, 41],
 //    popupAnchor: [1, -34],
 //    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
