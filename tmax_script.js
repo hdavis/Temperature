@@ -76,6 +76,11 @@ function onEachFeature(feature, layer) {
     layer.bindPopup(popupText);
 }
 
+function onEachFeature(feature, layer) {
+    console.log(feature);
+    layer.bindPopup(feature.properties.city);
+}
+
 var max_temps = new L.geoJson(null, {
     pointToLayer: function(feature, latlng) {
         console.log(latlng, feature);
