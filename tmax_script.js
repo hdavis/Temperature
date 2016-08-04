@@ -51,16 +51,18 @@ var smallIcon = new L.Icon({
     shadowSize:  [41, 41]
 });
 
-var popupText = "Summary stats for the Daily High"
-                + "<br>Temperatures over the 30 days between"
-                + "<br>6/7/16 and 7/6/16 inclusive"
-                + "<br>City: " + feature.properties.city
-                + "<br>Range of Daily Highs: " + feature.properties.range_tmax
-                + "<br>Highest Daily High: " + feature.properties.max_tmax
-                + "<br>Lowest Daily High: " + feature.properties.min_tmax
-                + "<br>Average Daily High: " + feature.properties.mean_tmax
-                + "<br>Standard Deviation of Daily Highs: "
-                + feature.properties.sd_tmax;
+//var popupText = "Summary stats for the Daily High"
+//                + "<br>Temperatures over the 30 days between"
+//                + "<br>6/7/16 and 7/6/16 inclusive"
+//                + "<br>City: " + feature.properties.city
+//                + "<br>Range of Daily Highs: " + feature.properties.range_tmax
+//                + "<br>Highest Daily High: " + feature.properties.max_tmax
+//                + "<br>Lowest Daily High: " + feature.properties.min_tmax
+//                + "<br>Average Daily High: " + feature.properties.mean_tmax
+//                + "<br>Standard Deviation of Daily Highs: "
+//                + feature.properties.sd_tmax;
+
+
 
 //var popupText = "Magnitude: " + feature.properties.mag
 //                + "<br>Location: " + feature.properties.place
@@ -68,6 +70,9 @@ var popupText = "Summary stats for the Daily High"
             
 function onEachFeature(feature, layer) {
     console.log(feature);
+    var popupText = "City: " + feature.properties.city
+        + "<br>Range of Daily Highs: " + feature.properties.range_tmax
+        + "<br>Highest Daily High: " + feature.properties.max_tmax;
     layer.bindPopup(popupText);
 }
 
