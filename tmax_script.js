@@ -79,7 +79,7 @@ var smallIcon = new L.Icon({
 function onEachFeature(feature, layer) {
     console.log(feature);
     layer.bindPopup(feature.properties.city);
-}
+};
 
 var max_temps = new L.geoJson(null, {
     pointToLayer: function(feature, latlng) {
