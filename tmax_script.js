@@ -65,10 +65,10 @@ $.ajax({
     url: "summary.geojson",
     success: function(data) {
         $(data.features).each(function(key, data) { 
-        max_temps.addData(data);
-        max_temps.onEachFeature: function (feature, layer) {
+            max_temps.onEachFeature: function (feature, layer) {
             layer.bindPopup(feature.properties.city);
-        }
+            }
+            max_temps.addData(data);
         });
         
     }
