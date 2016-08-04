@@ -51,10 +51,10 @@ var smallIcon = new L.Icon({
     shadowSize:  [41, 41]
 });
 
-function onEachFeature(feature, layer) {
-    console.log(feature);
-    layer.bindPopup(feature.properties.city);
-}
+//function onEachFeature(feature, layer) {
+//    console.log(feature);
+//    layer.bindPopup(feature.properties.city);
+//}
 
 
 var max_temps = new L.geoJson();
