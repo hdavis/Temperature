@@ -68,18 +68,18 @@ var smallIcon = new L.Icon({
 //                + "<br>Location: " + feature.properties.place
 //                + "<br><a href='" + feature.properties.url + "'>More info</a>";
             
-//function onEachFeature(feature, layer) {
-//    console.log(feature);
-//    var popupText = "City: " + feature.properties.city
-//        + "<br>Range of Daily Highs: " + feature.properties.range_tmax
-//        + "<br>Highest Daily High: " + feature.properties.max_tmax;
-//    layer.bindPopup(popupText);
-//}
-
 function onEachFeature(feature, layer) {
     console.log(feature);
-    layer.bindPopup(feature.properties.city);
-};
+    var popupText = "City: " + feature.properties.city
+        + "<br>Range of Daily Highs: " + feature.properties.range_tmax
+        + "<br>Highest Daily High: " + feature.properties.max_tmax;
+    layer.bindPopup(popupText);
+}
+
+//function onEachFeature(feature, layer) {
+//    console.log(feature);
+//    layer.bindPopup(feature.properties.city);
+//};
 
 var max_temps = new L.geoJson(null, {
     pointToLayer: function(feature, latlng) {
