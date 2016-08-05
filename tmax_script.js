@@ -61,10 +61,10 @@ function onEachFeature(feature, layer) {
                 + "<br>temperatures (&deg;F) over the 30 days"
                 + "<br>between 6/7/16 and 7/6/16 inclusive</strong>"
                 + "<br>City: " + feature.properties.city
-                + "<br>Range of Daily Highs: " + feature.properties.range_tmax
-                + "<br>Highest Daily High: " + feature.properties.max_tmax
-                + "<br>Lowest Daily High: " + feature.properties.min_tmax
-                + "<br>Average Daily High: " + feature.properties.mean_tmax
+                + "<br>Range of Daily Highs: " + feature.properties.range_tmax.toFixed(1)
+                + "<br>Highest Daily High: " + feature.properties.max_tmax.toFixed(1)
+                + "<br>Lowest Daily High: " + feature.properties.min_tmax.toFixed(1)
+                + "<br>Average Daily High: " + feature.properties.mean_tmax.toFixed(1)
                 + "<br>Standard Deviation of Daily Highs: "
                 + feature.properties.sd_tmax.toFixed(3);
     layer.bindPopup(popupText);
