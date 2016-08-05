@@ -57,7 +57,7 @@ function onEachFeature(feature, layer) {
     var popupText = "<strong>Summary statistics for the daily high"
                 + "<br>temperatures (&deg;F) during the 30 days"
                 + "<br>between 6/7/16 and 7/6/16 inclusive</strong>"
-                + "<br>City: " + <em>feature.properties.city</em>
+                + "<br>City: " + feature.properties.city
                 + "<br>Range of Daily Highs: " + feature.properties.range_tmax.toFixed(1)
                 + "<br>Highest Daily High: " + feature.properties.max_tmax.toFixed(1)
                 + "<br>Lowest Daily High: " + feature.properties.min_tmax.toFixed(1)
