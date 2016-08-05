@@ -45,11 +45,11 @@ var smallIcon = new L.Icon({
     iconUrl: 'icons/placeholder-29.svg',
     iconRetinaUrl: 'icons/placeholder-29.svg',
     iconSize:    [34, 34], // size of the icon
-    iconAnchor:  [12, 25], //  5, 12// point of the icon which will correspond to marker's location
-    popupAnchor: [4, -30], // 1, -34 point from which the popup should open relative to the iconAnchor
+    iconAnchor:  [12, 25], // point of the icon which will correspond to marker's location
+    popupAnchor: [4, -30], // point from which the popup should open relative to the iconAnchor
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     shadowSize:  [41, 41], // size of the shadow
-    shadowAnchor: [6, 34],  //10, 30 point of the shadow which will correspond to shadow's location
+    shadowAnchor: [6, 34],  // point of the shadow which will correspond to shadow's location
 });
 
 function onEachFeature(feature, layer) {
@@ -57,7 +57,7 @@ function onEachFeature(feature, layer) {
     var popupText = "<strong>Summary statistics for the daily high"
                 + "<br>temperatures (&deg;F) during the 30 days"
                 + "<br>between 6/7/16 and 7/6/16 inclusive</strong>"
-                + "<br>City: " + feature.properties.city
+                + "<br>City: " + <em>feature.properties.city</em>
                 + "<br>Range of Daily Highs: " + feature.properties.range_tmax.toFixed(1)
                 + "<br>Highest Daily High: " + feature.properties.max_tmax.toFixed(1)
                 + "<br>Lowest Daily High: " + feature.properties.min_tmax.toFixed(1)
