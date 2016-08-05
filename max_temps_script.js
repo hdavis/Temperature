@@ -49,7 +49,7 @@ var smallIcon = new L.Icon({
     popupAnchor: [4, -30], // point from which the popup should open relative to the iconAnchor
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     shadowSize:  [41, 41], // size of the shadow
-    shadowAnchor: [8, 37],  // 6, 34 point of the shadow which will correspond to shadow's location
+    shadowAnchor: [7, 37],  // 6, 34 point of the shadow which will correspond to shadow's location
 });
 
 function onEachFeature(feature, layer) {
