@@ -58,7 +58,7 @@ var smallIcon = new L.Icon({
 function onEachFeature(feature, layer) {
     console.log(feature);
     var popupText = "<strong>Summary statistics for the daily high"
-                + "<br>temperatures (&deg; F) over the 30 days"
+                + "<br>temperatures (&deg;F) over the 30 days"
                 + "<br>between 6/7/16 and 7/6/16 inclusive</strong>"
                 + "<br>City: " + feature.properties.city
                 + "<br>Range of Daily Highs: " + feature.properties.range_tmax
@@ -66,7 +66,7 @@ function onEachFeature(feature, layer) {
                 + "<br>Lowest Daily High: " + feature.properties.min_tmax
                 + "<br>Average Daily High: " + feature.properties.mean_tmax
                 + "<br>Standard Deviation of Daily Highs: "
-                + feature.properties.sd_tmax;
+                + feature.properties.sd_tmax.toFixed(3);
     layer.bindPopup(popupText);
 }
 
