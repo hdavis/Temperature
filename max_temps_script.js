@@ -45,11 +45,11 @@ var smallIcon = new L.Icon({
     iconUrl: 'icons/placeholder-29.svg',
     iconRetinaUrl: 'icons/placeholder-29.svg',
     iconSize:    [34, 34], // size of the icon
-    iconAnchor:  [12, 30], // 12, 25 point of the icon which will correspond to marker's location
+    iconAnchor:  [12, 30], // point of the icon which will correspond to marker's location
     popupAnchor: [4, -30], // point from which the popup should open relative to the iconAnchor
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     shadowSize:  [41, 41], // size of the shadow
-    shadowAnchor: [6, 37],  // 6, 34 point of the shadow which will correspond to shadow's location
+    shadowAnchor: [7, 37],  // point of the shadow which will correspond to shadow's location
 });
 
 function onEachFeature(feature, layer) {
