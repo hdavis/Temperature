@@ -66,7 +66,7 @@ function onEachFeature(feature, layer) {
                 + "<br>Lowest Daily High: " + feature.properties.min_tmax.toFixed(1)
                 + "<br>Average Daily High: " + feature.properties.mean_tmax.toFixed(1)
                 + "<br>Standard Deviation of Daily Highs: "
-                + feature.properties.sd_tmax.toFixed(3);
+                + feature.properties.sd_tmax.toFixed(2);
     layer.bindPopup(popupText);
 }
 
