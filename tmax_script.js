@@ -42,13 +42,14 @@ map.addLayer(OSM_BW_tiles);
 // Add maximum temperature data from geoJSON file
 
 var smallIcon = new L.Icon({
-    iconUrl: 'icons/placeholder-15.svg',
-    iconRetinaUrl: 'icons/placeholder-15.svg',
-    iconSize:    [30, 30],
-    iconAnchor:  [5, 12], // 12, 25
-    popupAnchor: [3, -15], // 1, -34
+    iconUrl: 'icons/placeholder-2.svg',
+    iconRetinaUrl: 'icons/placeholder-2.svg',
+    iconSize:    [41, 41], // size of the icon
+    iconAnchor:  [5, 12], // 12, 25 // point of the icon which will correspond to marker's location
+    popupAnchor: [1, -34], // point from which the popup should open relative to the iconAnchor
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    shadowSize:  [40, 40]
+    shadowSize:  [41, 41], // size of the shadow
+    shadowAnchor: [4, 62],  // point of the shadow which will correspond to shadow's location
 });
 
 //var popupText = "Magnitude: " + feature.properties.mag
