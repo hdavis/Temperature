@@ -31,7 +31,7 @@ var Surfer_tiles = L.tileLayer(Surfer_url, {
 
 // OpenStreetMap Black and White basemap
 var OSM_BW_url = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
-var OSM_BW_attr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+var OSM_BW_attr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' + ' Location icon designed by Freepik and distributed by Flaticon';
 var OSM_BW_tiles = L.tileLayer(OSM_BW_url, {
     maxZoom: zoommax,
     attribution: OSM_BW_attr
@@ -42,8 +42,8 @@ map.addLayer(OSM_BW_tiles);
 // Add maximum temperature data from geoJSON file
 
 var smallIcon = new L.Icon({
-    iconUrl: 'icons/pin-2_dk_blue.png',
-    iconRetinaUrl: 'icons/pin-2_dk_blue.png',
+    iconUrl: 'icons/pin-2_dk_blue.svg',
+    iconRetinaUrl: 'icons/pin-2_dk_blue.svg',
     iconSize:    [25, 25],
     iconAnchor:  [12, 25],
     popupAnchor: [1, -34],
