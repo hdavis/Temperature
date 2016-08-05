@@ -46,16 +46,12 @@ var smallIcon = new L.Icon({
     iconRetinaUrl: 'icons/placeholder-29.svg',
     iconSize:    [30, 30], // size of the icon
     iconAnchor:  [12, 25], //  5, 12// point of the icon which will correspond to marker's location
-    popupAnchor: [-3, -30], // 1, -34 point from which the popup should open relative to the iconAnchor
+    popupAnchor: [-10, -30], // 1, -34 point from which the popup should open relative to the iconAnchor
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     shadowSize:  [41, 41], // size of the shadow
    // shadowAnchor: [4, 62],  // point of the shadow which will correspond to shadow's location
 });
 
-//var popupText = "Magnitude: " + feature.properties.mag
-//                + "<br>Location: " + feature.properties.place
-//                + "<br><a href='" + feature.properties.url + "'>More info</a>";
-            
 function onEachFeature(feature, layer) {
     console.log(feature);
     var popupText = "<strong>Summary statistics for the daily high"
@@ -70,11 +66,6 @@ function onEachFeature(feature, layer) {
                 + feature.properties.sd_tmax.toFixed(2);
     layer.bindPopup(popupText);
 }
-
-//function onEachFeature(feature, layer) {
-//    console.log(feature);
-//    layer.bindPopup(feature.properties.city);
-//};
 
 var max_temps = new L.geoJson(null, {
     pointToLayer: function(feature, latlng) {
@@ -97,37 +88,6 @@ $.ajax({
         
     }
 }).error(function() {});
-
-//============================
-//var smallIcon = new L.Icon({
-//    iconUrl: 'pin-1_dk_blue.png',
-//    iconRetinaUrl: 'pin-1_dk_blue.png',
-//    iconSize:    [25, 25],
-//    iconAnchor:  [12, 41],
-//    popupAnchor: [1, -34],
-//    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-//    shadowSize:  [41, 41]
-//  });
-//
-//  function onEachFeature(feature, layer) {
-//    console.log(feature);
-//    layer.bindPopup(feature.properties.city);
-//  }
-//
-//  $.getJSON('summary.geojson', function(data) {
-//    console.log(data);
-//
-//    L.geoJson(data, {
-//      pointToLayer: function(feature, latlng) {
-//        console.log(latlng, feature);
-//        return L.marker(latlng, {
-//          icon: smallIcon
-//        });
-//      },
-//      onEachFeature: onEachFeature
-//    }).addTo(map);
-//  });
-//===========================
 
 
 // Add a WMS for weather data
