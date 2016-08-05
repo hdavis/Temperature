@@ -1,7 +1,7 @@
 'use strict';
 //var my_json;
 var initLat = 38;
-var initLong = -102;
+var initLong = -110;
 var initZoomLevel = 4;
 var zoommax = 18;
 
