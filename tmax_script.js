@@ -45,8 +45,8 @@ var smallIcon = new L.Icon({
     iconUrl: 'icons/placeholder-29.svg',
     iconRetinaUrl: 'icons/placeholder-29.svg',
     iconSize:    [30, 30],
-    iconAnchor:  [12, 25],
-    popupAnchor: [-3, -34],
+    iconAnchor:  [5, 25],
+    popupAnchor: [1, -34],
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     shadowSize:  [40, 40]
 });
