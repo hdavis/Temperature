@@ -44,11 +44,11 @@ map.addLayer(OSM_BW_tiles);
 var smallIcon = new L.Icon({
     iconUrl: 'icons/placeholder-29.svg',
     iconRetinaUrl: 'icons/placeholder-29.svg',
-    iconSize:    [30, 30], // size of the icon
+    iconSize:    [34, 34], // size of the icon
     iconAnchor:  [12, 25], //  5, 12// point of the icon which will correspond to marker's location
-    popupAnchor: [4, -30], // 1, -34 point from which the popup should open relative to the iconAnchor
+    popupAnchor: [4, -34], // 1, -34 point from which the popup should open relative to the iconAnchor
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    shadowSize:  [30, 30], // size of the shadow
+    shadowSize:  [41, 41], // size of the shadow
     shadowAnchor: [10, 40],  //6, 30 point of the shadow which will correspond to shadow's location
 });
 
