@@ -8,8 +8,10 @@ body {
     height: 100%;
     width: 100%;
     margin: 0;
+/*
     padding-bottom: 50px;
     margin-bottom: 90px;
+*/
 }
 #map {
     height: 100%;
@@ -71,3 +73,15 @@ pre {
 	font-weight: 400;
 	line-height: 18.5714px;
 }*/
+.last {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+    text-align: center;
+/*    padding-top: 300ps;*/
+    padding-bottom: 300px;
+/*    margin-bottom: 300px;*/
+}
