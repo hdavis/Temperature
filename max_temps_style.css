@@ -3,15 +3,9 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
+    padding-bottom: 50px;
 }
 #map {
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-}
-#boxplot {
-    display:block;
     height: 100%;
     width: 100%;
     margin: 0 auto;
@@ -25,10 +19,6 @@ h1 {
 	font-weight: 500;
 	line-height: 26.4px;
     text-align: center;
-/*
-    margin: 10;
-    padding: 10;
-*/
 }
 h2 {
 	font-family: Verdana, Geneva, sans-serif;
@@ -38,10 +28,6 @@ h2 {
 	font-weight: 500;
 	line-height: 26.4px;
     text-align: center;
-/*
-    margin: 10;
-    padding: 10;
-*/
 }
 h3 {
 	font-family: Verdana, Geneva, sans-serif;
@@ -51,10 +37,6 @@ h3 {
 	font-weight: 500;
 	line-height: 15.4px;
     text-align: center;
-/*
-    margin: 10;
-    padding: 10;
-*/
 }
 p {
 	font-family: Verdana, Geneva, sans-serif;
@@ -64,10 +46,6 @@ p {
 	font-weight: 400;
 	line-height: 20px;
     text-align: center;
-/*
-    margin: 10;
-    padding: 10;
-*/
 }
 blockquote {
 	font-family: Verdana, Geneva, sans-serif;
