@@ -1,6 +1,88 @@
-html, body, #map {
+html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
 }
+#map {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+#boxplot {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+h1 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+    text-align: center;
+/*
+    margin: 10;
+    padding: 10;
+*/
+}
+h2 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+    text-align: center;
+/*
+    margin: 10;
+    padding: 10;
+*/
+}
+h3 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+    text-align: center;
+/*
+    margin: 10;
+    padding: 10;
+*/
+}
+p {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+    text-align: center;
+/*
+    margin: 10;
+    padding: 10;
+*/
+}
+blockquote {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 30px;
+    text-align: center;
+}
+/*
+pre {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714px;
+}*/

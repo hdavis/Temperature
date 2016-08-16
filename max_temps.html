@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>A Look at the Last 30 days of Maximum Temperatures</title>
+    <title>Maximum Temperatures in June for Select Cities</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="../dist/leaflet.ie.css" /><![endif]-->
     <link rel="stylesheet" href="max_temps_style.css" />
 </head>
 <body>
-    <div id="map"></div>
+    <h1>Maximum June Temperatures and Current Weather for Six US Cities</h1>
+    <div id="map" style="height: 400px; width: 100% ;"></div>
+    <div>
+      <h2>Project Goal</h2>
+      <p>
+          Collect the last 30 days of temperature data from the Dark Sky Forecast web API for select cities in the US, extract the maximum daily temperatures, summarize the data and visualize it using box plots to show the range in maximum daily temperatures over that 30-day period for each city.
+      </p>
+      <p>
+          For this map, data was collected for the 30-day period from June 7 - July 6, 2016 for six cities: Atlanta, Austin, Boston, Denver, Los Angeles and Seattle.
+      </p>
+      <p>
+          To see statistics for each city (e.g. the highest high during the 30-day period, or the range of high temperatures during the month), click on the black marker for the city of interest.
+          The rainbow colored images on the map show current weather conditions across the United States from the Nexrad weather radars.
+      </p>
+        <p>
+            To see a different base map, or to turn a data layer off or on, hover over the multiple layer icon (which looks like stacked diamonds) in the upper right corner of the map.
+        </p>
+    </div>
+    <div>
+        <iframe width="900" height="800" style="float:center" style="border:none;" scrolling="no" src="https://plot.ly/~hdavis/8.embed"></iframe>
+    </div>
+    <div>
+      <h2>Data Insights Illustrated by the Box Plots</h2>
+        <p>
+            Hover over the boxes in the plot above to see the exact values. Temperatures are in degrees Fahrenheit. <br/> 
+            The dots to the left of each box plot are the actual data (there are 30 data points for each box plot).
+        </p>
+        <p>
+        For this time period (6/7/16 - 7/6/16), the data show that the daily high temperature for Austin has the smallest<br/>fluctuation changing only 12.88 degrees over the 30-days compared to Los Angeles, which has the largest range<br/>of 28.10 degrees F (this includes a couple of points shown as outliers in the lavender box plot for Los Angeles). 
+        </p>
+        <p> 
+        Austin also has the highest mean maximum temperature over the period, indicating that not only<br/>is the daily high temperature relatively consistent, but also it just plain hot in Austin in June.<br/>
+        Seattle has the lowest daily high temperatures of the six cities considered, which is not surprising<br/>given the generally cloudier and rainier climate of the Pacific Northwest, even in June.
+        </p>
+    </div>
+    <div>
+        <p>
+            To view the code used to scrape the data from the <a href = "https://developer.forecast.io/docs/v2#time_cal">Dark Sky Forecast API</a> and process it,<br/>see the <a href="https://github.com/hdavis/Temperature/blob/gh-pages/Temperature.ipynb">Jupyter Notebook</a> for this project.
+        </p>
+    </div>
+
     <script   src="https://code.jquery.com/jquery-1.11.0.min.js"   integrity="sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI="   crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script type="text/javascript" src="max_temps_script.js"></script>
