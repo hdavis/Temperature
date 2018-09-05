@@ -5,4 +5,4 @@ This repo includes Python code to collect the last 30 days of temperature data f
 
 This repo also contains files to plot the summary data on a web map, located at: https://hdavis.github.io/Temperature/max_temps.html.
 
-To see the Python code and box plots, open the Jupyter/IPython Notebook: "Temperature Collection via Web API.ipynb" or "Temperature.ipynb"
+To see the Python code and box plots, open the Jupyter/IPython Notebooks: "Temperature.ipynb" for a Python 2 version or "Temperature_Python3_Version.ipynb" for the same notebook updated to Python 3.
