@@ -10,9 +10,33 @@ var map = L.map('map');
 // BASEMAPS
 // Additional basemaps @ https://leaflet-extras.github.io/leaflet-providers/preview/
 
+// ESRI World Topo basemap
+var ESRI_WT_url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
+var ESRI_WT_attr = 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community' + ' | Location icon designed by Freepik and distributed by Flaticon';
+var ESRI_WT_tiles = L.tileLayer(ESRI_WT_url, {
+    maxZoom: zoommax,
+    attribution: ESRI_WT_attr
+});
+
+// Stamen Toner-lite Basemap
+var Stamen_TL_url = 'http://a.tile.stamen.com/toner-lite/{z}/{x}/{y}.png';
+var Stamen_TL_attr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.' + ' | Location icon designed by Freepik and distributed by Flaticon';
+var Stamen_TL_tiles = L.tileLayer(Stamen_TL_url, {
+    maxZoom: zoommax,
+    attribution: Stamen_TL_attr
+});
+
+// Stamen Terrain Basemap
+var Stamen_Ter_url = 'http://a.tile.stamen.com/terrain/{z}/{x}/{y}.png';
+var Stamen_Ter_attr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.' + ' | Location icon designed by Freepik and distributed by Flaticon';
+var Stamen_Ter_tiles = L.tileLayer(Stamen_Ter_url, {
+    maxZoom: zoommax,
+    attribution: Stamen_Ter_attr
+});
+
 // Stamen Watercolor Basemap
 var Stamen_WC_url = 'http://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}';
-var Stamen_WC_attr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' + ' | Location icon designed by Freepik and distributed by Flaticon';
+var Stamen_WC_attr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.' + ' | Location icon designed by Freepik and distributed by Flaticon';
 var Stamen_WC_tiles = L.tileLayer(Stamen_WC_url, {
     attribution: Stamen_WC_attr,
     subdomains: 'abcd',
@@ -21,22 +45,15 @@ var Stamen_WC_tiles = L.tileLayer(Stamen_WC_url, {
     ext: 'png'
 });
 
-// Open Map Surfer Roads Basemap
-var Surfer_url = 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}';
-var Surfer_attr = 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' + ' | Location icon designed by Freepik and distributed by Flaticon';
-var Surfer_tiles = L.tileLayer(Surfer_url, {
-    maxZoom: zoommax,
-    attribution: Surfer_attr
-});
-
 // OpenStreetMap Black and White basemap
 var OSM_BW_url = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
-var OSM_BW_attr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' + ' | Location icon designed by Freepik and distributed by Flaticon';
+var OSM_BW_attr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' + ' | Location icon designed by Freepik and distributed by Flaticon';
 var OSM_BW_tiles = L.tileLayer(OSM_BW_url, {
     maxZoom: zoommax,
     attribution: OSM_BW_attr
 });
 map.addLayer(OSM_BW_tiles);
+
 
 // OVERLAYS
 // Add maximum temperature data from geoJSON file
@@ -101,9 +118,11 @@ map.addLayer(nexrad);
 
 // Define and display the control for Basemaps and Overlays
 var baseLayers = {
-    "Water Color": Stamen_WC_tiles,
-    "Open Map Surfer Roads": Surfer_tiles,
-    "Open Street Map - B&W": OSM_BW_tiles
+    "Open Street Map B&W": OSM_BW_tiles,
+    "Stamen Water Color": Stamen_WC_tiles,
+    "Stamen Terrain": Stamen_Ter_tiles,
+    "Stamen Toner Light": Stamen_TL_tiles,
+    "ESRI World Topo": ESRI_WT_tiles
 };
 var overlays = {
     "Maximum Temperatures": max_temps,
